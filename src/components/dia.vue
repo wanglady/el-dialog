@@ -5,14 +5,13 @@
              :modal='false'
              :close-on-press-escape='false'
              :close-on-click-modal='false'>
-    <i v-if='iconType === "success"'
-       class="icon iconfont  iconDia icon-chenggong"></i>
-    <i v-if='iconType === "fail"'
-       class="icon iconfont  iconDia icon-warning-circle1"></i>
-    <img v-if='iconType === "loading"'
-         src="../../assets/img/loading.gif"
-         style="width:40px;height:40px">
-
+    <i v-if="success == true "
+       class="icon iconfont  iconDia iconDiaGreen el-icon-success"></i>
+    <i v-if="success == false"
+       class="icon iconfont  iconDiaRed el-icon-error"></i>
+    <img v-if="success === 'loading'"
+         src="../assets/loading.gif"
+         style="width:40px;height:40px;">
     <span>{{message}}</span>
   </el-dialog>
 </template>
@@ -34,10 +33,9 @@ export default {
       type: String,
       default: ''
     },
-    iconType: { // 成功失败的图标显示
-      type: String,
-      default: ''
+    success: {// 成功失败的图标显示
     }
+
   },
   created () {
     this.dialogVisible = this.showDialog
@@ -54,4 +52,23 @@ export default {
 </script>
 
 <style>
+</style>
+<style scope>
+.iconDiaRed {
+  color: #e93b39;
+  font-size: 3rem;
+  vertical-align: middle;
+}
+.iconDiaGreen {
+  color: green;
+  font-size: 3rem;
+  vertical-align: middle;
+}
+.el-dialog__header {
+  padding: 0;
+}
+.el-dialog--center {
+  min-width: 390px;
+  max-width: 700px;
+}
 </style>
